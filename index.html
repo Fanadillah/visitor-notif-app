@@ -6,19 +6,33 @@
     <title>Document</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-            background-color: #f0f8ff; /* Light blue background */
-            font-family: Arial, sans-serif;
-        }
+    text-align: center;
+    background-color: #ffebf0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #d63384;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
         h1 {
             margin: 20px 0 0;
+            text-align: center;
             color: #333;
-            font-size: 2em;
+            font-size: 1.5em;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 50px;
+            background-color: #ef8f8f; /* Green background */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
         }
         .emoji {
             font-size: 5em;
@@ -39,25 +53,26 @@
 </head>
 <body>
     <div class="emoji">🎁</div>
-    <h1>Halo, ini halaman sederhana saya!</h1>
+    <h1>Halo Farah, aku ada sesuatu nih buat kamu</h1>
+    <button type="button" id="button1" href="#">Klik aku yaa</button>
     <script>
-        const botToken = "YOUR_TELEGRAM_BOT_TOKEN";
-        const chatId = "YOUR_CHAT_ID";
-        const ipinfoToken = "YOUR_IPINFO_TOKEN";
+        // const botToken = "7779962806:AAHyai9E10gjRoESBwwqyW8pYuu4vcrD0q4";
+        // const chatId = "1223113664";
 
-        fetch(`https://ipinfo.io/json?token=${ipinfoToken}`)
-        .then(response => response.json())
-        .then(data => {
-            const ip = data.ip;
-            const city = data.city;
-            const region = data.region;
-            const country = data.country;
-            const location = `${city}, ${region}, ${country}`;
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=📢 Website dikunjung dari IP: ${ip}, Lokasi: ${location}`)
-            .then(response => console.log("Notifikasi terkirim"))
-            .catch(error => console.error("Gagal mengirim notifikasi", error));
-        })
-        .catch(error => console.error("Gagal mendapatkan IP", error));
+        // fetch('https://api.ipify.org?format=json')
+        // .then(response => response.json())
+        // .then(data => {
+        //     const ip = data.ip;
+        //     fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=📢 Website dikunjung dari IP: ${ip}`)
+        //     .then(response => console.log("Notifikasi terkirim"))
+        //     .catch(error => console.error("Gagal mengirim notifikasi", error));
+        // })
+        // .catch(error => console.error("Gagal mendapatkan IP", error));
+
+        document.getElementById('button1').addEventListener('click', function () {
+            window.location.href = 'hallo.html';
+        });
+
     </script>
 </body>
 </html>

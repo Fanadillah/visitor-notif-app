@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maafin Aku 😢</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffebf0;
+    padding: 20px;
+    overflow: hidden; /* Hapus scroll horizontal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* .container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+} */
+
+h2 {
+    color: #d63384;
+    font-size: 2rem;
+}
+
+button {
+    font-size: 16px;
+    padding: 12px 18px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+#acceptBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+#rejectBtn {
+    background-color: #dc3545;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 79%;
+    transform: translateX(-50%);
+}
+.emoji{
+    font-size: 1rem;
+    width: 280px;
+}
+
+.hidden {
+    display: none;
+    font-size: 18px;
+    color: #d63384;
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="emoji" src="image5.gif" alt="" srcset="">
+        <h2>Farah, kamu mau maafin aku? </h2>
+        <button id="acceptBtn">Aku maafin kamu ❤</button><br>
+        <button id="rejectBtn">Belum bisa maafin...</button>
+        <div id="surprise" class="hidden">
+            🎉 Yeay! Kamu maafin aku! Aku janji bakal lebih hati-hati dan bikin kamu bahagia! ❤  
+        </div>
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const rejectBtn = document.getElementById("rejectBtn");
+    const acceptBtn = document.getElementById("acceptBtn");
+
+    rejectBtn.addEventListener("mouseover", moveButton);
+    rejectBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        moveButton();
+    });
+
+    function moveButton() {
+        const container = document.querySelector(".container");
+        const maxX = container.clientWidth - rejectBtn.clientWidth;
+        const maxY = container.clientHeight - rejectBtn.clientHeight;
+
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+
+        rejectBtn.style.left = `${newX}px`;
+        rejectBtn.style.top = `${newY}px`;
+    }
+
+    // Saat tombol menerima ditekan, pindah ke halaman kejutan
+    acceptBtn.addEventListener("click", () => {
+        window.location.href = "surprise.html"; // Redirect ke halaman kejutan
+    });
+});
+    </script>
+</body>
+</html>
