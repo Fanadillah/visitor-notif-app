@@ -8,21 +8,43 @@
         body {
             display: flex;
             justify-content: center;
-            align-items: center ;
+            align-items: center;
             height: 100vh;
             margin: 0;
             flex-direction: column;
+            background-color: #f0f8ff; /* Light blue background */
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin: 20px 0 0;
+            color: #333;
+            font-size: 2em;
+        }
+        .emoji {
+            font-size: 5em;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
         }
     </style>
 </head>
 <body>
-    <div>🎁</div>   
+    <div class="emoji">🎁</div>
     <h1>Halo, ini halaman sederhana saya!</h1>
     <script>
         const botToken = "7779962806:AAHyai9E10gjRoESBwwqyW8pYuu4vcrD0q4";
         const chatId = "1223113664";
 
-        fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=📢 Website dikunjung`)
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=📢 Website dikunjung`)
         .then(response => console.log("Notifikasi terkirim"))
         .catch(error => 
             console.error("Gagal mengirim notifikasi", error)
