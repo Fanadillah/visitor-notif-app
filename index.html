@@ -41,14 +41,19 @@
     <div class="emoji">🎁</div>
     <h1>Halo, ini halaman sederhana saya!</h1>
     <script>
-        const botToken = "7779962806:AAHyai9E10gjRoESBwwqyW8pYuu4vcrD0q4";
-        const chatId = "1223113664";
+        const botToken = "YOUR_TELEGRAM_BOT_TOKEN";
+        const chatId = "YOUR_CHAT_ID";
+        const ipinfoToken = "YOUR_IPINFO_TOKEN";
 
-        fetch('https://api.ipify.org?format=json')
+        fetch(`https://ipinfo.io/json?token=${ipinfoToken}`)
         .then(response => response.json())
         .then(data => {
             const ip = data.ip;
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=📢 Website dikunjung dari IP: ${ip}`)
+            const city = data.city;
+            const region = data.region;
+            const country = data.country;
+            const location = `${city}, ${region}, ${country}`;
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=📢 Website dikunjung dari IP: ${ip}, Lokasi: ${location}`)
             .then(response => console.log("Notifikasi terkirim"))
             .catch(error => console.error("Gagal mengirim notifikasi", error));
         })
